@@ -20,8 +20,9 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['SF Pro Display', 'system-ui', 'sans-serif'],
+				sans: ['SF Pro Display', 'Inter', 'system-ui', 'sans-serif'],
 				mono: ['SF Mono', 'monospace'],
+        playfair: ['Playfair Display', 'serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

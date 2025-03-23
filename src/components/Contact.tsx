@@ -10,6 +10,69 @@ import {
   MessageSquare
 } from 'lucide-react';
 
+const socialLinks = [
+  {
+    name: "LinkedIn",
+    icon: Linkedin,
+    url: "#",
+    color: "bg-[#0077B5]/10 text-[#0077B5] hover:bg-[#0077B5] hover:text-white"
+  },
+  {
+    name: "GitHub",
+    icon: Github,
+    url: "#",
+    color: "bg-[#333]/10 text-[#333] hover:bg-[#333] hover:text-white"
+  },
+  {
+    name: "Instagram",
+    icon: Instagram,
+    url: "#",
+    color: "bg-[#E1306C]/10 text-[#E1306C] hover:bg-[#E1306C] hover:text-white"
+  },
+  {
+    name: "WhatsApp",
+    icon: MessageSquare,
+    url: "https://wa.me/919876543210",
+    color: "bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366] hover:text-white"
+  }
+];
+
+const ContactWidget = ({ icon: Icon, label, value, href, color }) => (
+  <a 
+    href={href} 
+    target={href.startsWith('http') ? "_blank" : undefined}
+    rel={href.startsWith('http') ? "noopener noreferrer" : undefined}
+    className="group"
+  >
+    <motion.div 
+      whileHover={{ y: -5, scale: 1.03 }}
+      whileTap={{ scale: 0.98 }}
+      className={`flex items-center p-4 rounded-xl ${color} transition-all duration-300 shadow-sm hover:shadow-md`}
+    >
+      <div className="mr-4">
+        <Icon size={24} />
+      </div>
+      <div className="flex flex-col">
+        <span className="text-sm font-medium opacity-80">{label}</span>
+        <span className="font-semibold">{value}</span>
+      </div>
+    </motion.div>
+  </a>
+);
+
+const SocialLink = ({ icon: Icon, url, color }) => (
+  <motion.a 
+    href={url}
+    target="_blank"
+    rel="noopener noreferrer"
+    whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.9 }}
+    className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${color}`}
+  >
+    <Icon size={22} />
+  </motion.a>
+);
+
 const Contact: React.FC = () => {
   return (
     <section id="contact" className="section bg-secondary/50">
@@ -19,7 +82,7 @@ const Contact: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <h2 className="section-heading">Get In Touch</h2>
           <p className="section-subheading max-w-3xl mx-auto">
@@ -36,73 +99,35 @@ const Contact: React.FC = () => {
           >
             <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>
             
-            <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-background flex items-center justify-center shadow-sm">
-                  <Mail className="text-primary" size={20} />
-                </div>
-                <div>
-                  <h4 className="text-sm text-muted-foreground mb-1">Email</h4>
-                  <a 
-                    href="mailto:meet.mangaonkar@example.com"
-                    className="text-foreground hover:text-primary transition-colors"
-                  >
-                    meet.mangaonkar@example.com
-                  </a>
-                </div>
-              </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+              <ContactWidget 
+                icon={Mail} 
+                label="Email"
+                value="meet.mangaonkar@example.com"
+                href="mailto:meet.mangaonkar@example.com"
+                color="bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground"
+              />
               
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-background flex items-center justify-center shadow-sm">
-                  <Phone className="text-primary" size={20} />
-                </div>
-                <div>
-                  <h4 className="text-sm text-muted-foreground mb-1">Phone</h4>
-                  <a 
-                    href="tel:+919876543210"
-                    className="text-foreground hover:text-primary transition-colors"
-                  >
-                    +91 98765 43210
-                  </a>
-                </div>
-              </div>
-              
-              <div>
-                <h4 className="text-lg font-medium mb-4">Social Profiles</h4>
-                <div className="flex gap-4">
-                  <a 
-                    href="#" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-background flex items-center justify-center text-muted-foreground hover:text-primary transition-colors shadow-sm"
-                  >
-                    <Linkedin size={18} />
-                  </a>
-                  <a 
-                    href="#" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-background flex items-center justify-center text-muted-foreground hover:text-primary transition-colors shadow-sm"
-                  >
-                    <Github size={18} />
-                  </a>
-                  <a 
-                    href="#" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-background flex items-center justify-center text-muted-foreground hover:text-primary transition-colors shadow-sm"
-                  >
-                    <Instagram size={18} />
-                  </a>
-                  <a 
-                    href="https://wa.me/919876543210" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-background flex items-center justify-center text-muted-foreground hover:text-primary transition-colors shadow-sm"
-                  >
-                    <MessageSquare size={18} />
-                  </a>
-                </div>
+              <ContactWidget 
+                icon={Phone} 
+                label="Phone"
+                value="+91 98765 43210"
+                href="tel:+919876543210"
+                color="bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground"
+              />
+            </div>
+            
+            <div>
+              <h4 className="text-lg font-medium mb-4">Social Profiles</h4>
+              <div className="flex gap-4 flex-wrap">
+                {socialLinks.map((social, index) => (
+                  <SocialLink 
+                    key={index}
+                    icon={social.icon}
+                    url={social.url}
+                    color={social.color}
+                  />
+                ))}
               </div>
             </div>
           </motion.div>
@@ -163,12 +188,14 @@ const Contact: React.FC = () => {
                 ></textarea>
               </div>
               
-              <button
+              <motion.button
                 type="submit"
                 className="apple-button w-full flex justify-center"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
                 Send Message
-              </button>
+              </motion.button>
             </form>
           </motion.div>
         </div>

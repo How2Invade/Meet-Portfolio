@@ -18,8 +18,22 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       setShowScrollTop(window.scrollY > 400);
     };
 
+    // Detect user inactivity to auto-scroll sections
+    let timer: number;
+    const resetTimer = () => {
+      clearTimeout(timer);
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', resetTimer);
+    window.addEventListener('keydown', resetTimer);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', resetTimer);
+      window.removeEventListener('keydown', resetTimer);
+      clearTimeout(timer);
+    };
   }, []);
 
   const scrollToTop = () => {
@@ -28,6 +42,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       behavior: 'smooth'
     });
   };
+
+  // Cinematic grain effect overlay
+  const CinematicGrain = () => (
+    <div className="fixed inset-0 z-10 pointer-events-none opacity-20 mix-blend-overlay">
+      <div className="absolute inset-0 bg-noise"></div>
+    </div>
+  );
 
   return (
     <>
@@ -38,15 +59,31 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       </AnimatePresence>
 
       {!loading && (
-        <>
-          <Navbar />
-          <main>{children}</main>
+        <motion.div 
+          initial={{ opacity: 0 }} 
+          animate={{ opacity: 1 }} 
+          transition={{ duration: 0.8 }}
+          className="relative"
+        >
+          <CinematicGrain />
           
-          <footer className="py-6 px-6 bg-background text-center">
+          <Navbar />
+          
+          <main className="relative z-20">
+            {children}
+          </main>
+          
+          <footer className="py-6 px-6 bg-background text-center relative z-20">
             <div className="container mx-auto">
-              <p className="text-muted-foreground text-sm">
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+                className="text-muted-foreground text-sm"
+              >
                 © {new Date().getFullYear()} Meet Mangaonkar. All rights reserved.
-              </p>
+              </motion.p>
             </div>
           </footer>
           
@@ -64,7 +101,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </motion.button>
             )}
           </AnimatePresence>
-        </>
+        </motion.div>
       )}
     </>
   );

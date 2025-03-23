@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import { Home, User, Briefcase, Trophy, Image, Phone, Download } from 'lucide-react';
 
 interface NavItem {
@@ -30,11 +29,11 @@ const Navbar: React.FC = () => {
         setScrolled(isScrolled);
       }
       
-      // Determine active section
+      // Determine active section - fixed TypeScript errors by checking if elements exist
       const sections = document.querySelectorAll('section[id]');
       sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+        const sectionHeight = section.clientHeight;
         if (window.scrollY >= (sectionTop - 100) && window.scrollY < (sectionTop + sectionHeight - 100)) {
           setActiveSection(section.id);
         }

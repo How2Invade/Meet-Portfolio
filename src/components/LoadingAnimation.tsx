@@ -8,11 +8,6 @@ const greetings = [
   { text: "नमस्कार", lang: "Marathi" },
   { text: "Bonjour", lang: "French" },
   { text: "こんにちは", lang: "Japanese" },
-  { text: "Hola", lang: "Spanish" },
-  { text: "Ciao", lang: "Italian" },
-  { text: "안녕하세요", lang: "Korean" },
-  { text: "你好", lang: "Chinese" },
-  { text: "Olá", lang: "Portuguese" },
 ];
 
 interface LoadingAnimationProps {
@@ -24,21 +19,22 @@ const LoadingAnimation: React.FC<LoadingAnimationProps> = ({ onComplete }) => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
+    // Faster animation - complete in under 4 seconds
     const interval = setInterval(() => {
       if (currentIndex < greetings.length - 1) {
         setIsVisible(false);
         setTimeout(() => {
           setCurrentIndex(prev => prev + 1);
           setIsVisible(true);
-        }, 500);
+        }, 300); // Faster transition between greetings
       } else {
         clearInterval(interval);
         setIsVisible(false);
         setTimeout(() => {
           onComplete();
-        }, 1000);
+        }, 500);
       }
-    }, 1000);
+    }, 700); // Show each greeting for less time
 
     return () => clearInterval(interval);
   }, [currentIndex, onComplete]);
@@ -51,14 +47,14 @@ const LoadingAnimation: React.FC<LoadingAnimationProps> = ({ onComplete }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.3 }} // Faster animations
             className="text-center"
           >
             <motion.h1 
-              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-2"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60"
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.3 }}
             >
               {greetings[currentIndex].text}
             </motion.h1>
@@ -66,7 +62,7 @@ const LoadingAnimation: React.FC<LoadingAnimationProps> = ({ onComplete }) => {
               className="text-sm text-muted-foreground"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
+              transition={{ delay: 0.1, duration: 0.3 }}
             >
               {greetings[currentIndex].lang}
             </motion.p>
