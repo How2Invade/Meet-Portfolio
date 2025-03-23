@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { 
@@ -21,7 +20,7 @@ const socialLinks = [
     name: "GitHub",
     icon: Github,
     url: "#",
-    color: "bg-[#333]/10 text-[#333] hover:bg-[#333] hover:text-white"
+    color: "bg-[#333]/10 text-[#333] hover:bg-[#333] hover:text-white dark:bg-[#333]/20 dark:text-gray-200 dark:hover:bg-[#333]"
   },
   {
     name: "Instagram",
@@ -37,35 +36,41 @@ const socialLinks = [
   }
 ];
 
-const ContactWidget = ({ icon: Icon, label, value, href, color }) => (
-  <a 
-    href={href} 
-    target={href.startsWith('http') ? "_blank" : undefined}
-    rel={href.startsWith('http') ? "noopener noreferrer" : undefined}
-    className="group"
-  >
-    <motion.div 
-      whileHover={{ y: -5, scale: 1.03 }}
-      whileTap={{ scale: 0.98 }}
-      className={`flex items-center p-4 rounded-xl ${color} transition-all duration-300 shadow-sm hover:shadow-md`}
+const ContactWidget = ({ icon: Icon, label, value, href, color }) => {
+  const displayValue = label === "Email" && value.length > 20 && window.innerWidth < 640
+    ? `${value.slice(0, 18)}...`
+    : value;
+
+  return (
+    <a 
+      href={href} 
+      target={href.startsWith('http') ? "_blank" : undefined}
+      rel={href.startsWith('http') ? "noopener noreferrer" : undefined}
+      className="group w-full"
     >
-      <div className="mr-4">
-        <Icon size={24} />
-      </div>
-      <div className="flex flex-col">
-        <span className="text-sm font-medium opacity-80">{label}</span>
-        <span className="font-semibold">{value}</span>
-      </div>
-    </motion.div>
-  </a>
-);
+      <motion.div 
+        whileHover={{ y: -5, scale: 1.03 }}
+        whileTap={{ scale: 0.98 }}
+        className={`flex items-center p-4 rounded-xl ${color} transition-all duration-300 shadow-sm hover:shadow-md`}
+      >
+        <div className="mr-4 shrink-0">
+          <Icon size={24} />
+        </div>
+        <div className="flex flex-col min-w-0">
+          <span className="text-sm font-medium opacity-80">{label}</span>
+          <span className="font-semibold truncate">{displayValue}</span>
+        </div>
+      </motion.div>
+    </a>
+  );
+};
 
 const SocialLink = ({ icon: Icon, url, color }) => (
   <motion.a 
     href={url}
     target="_blank"
     rel="noopener noreferrer"
-    whileHover={{ scale: 1.1 }}
+    whileHover={{ scale: 1.1, rotate: 5 }}
     whileTap={{ scale: 0.9 }}
     className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${color}`}
   >
@@ -97,9 +102,24 @@ const Contact: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true, margin: "-100px" }}
           >
-            <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>
+            <h3 className="text-2xl font-semibold mb-6">Connect With Me</h3>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+            <div className="mb-8">
+              <h4 className="text-lg font-medium mb-4">Social Profiles</h4>
+              <div className="flex gap-4 flex-wrap mb-8">
+                {socialLinks.map((social, index) => (
+                  <SocialLink 
+                    key={index}
+                    icon={social.icon}
+                    url={social.url}
+                    color={social.color}
+                  />
+                ))}
+              </div>
+            </div>
+            
+            <h4 className="text-lg font-medium mb-4">Contact Information</h4>
+            <div className="grid grid-cols-1 gap-4">
               <ContactWidget 
                 icon={Mail} 
                 label="Email"
@@ -115,20 +135,6 @@ const Contact: React.FC = () => {
                 href="tel:+919876543210"
                 color="bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground"
               />
-            </div>
-            
-            <div>
-              <h4 className="text-lg font-medium mb-4">Social Profiles</h4>
-              <div className="flex gap-4 flex-wrap">
-                {socialLinks.map((social, index) => (
-                  <SocialLink 
-                    key={index}
-                    icon={social.icon}
-                    url={social.url}
-                    color={social.color}
-                  />
-                ))}
-              </div>
             </div>
           </motion.div>
           

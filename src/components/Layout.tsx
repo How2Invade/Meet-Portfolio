@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import LoadingAnimation from './LoadingAnimation';
+import ThemeToggle from './ThemeToggle';
 import { ArrowUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -28,11 +29,17 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     window.addEventListener('mousemove', resetTimer);
     window.addEventListener('keydown', resetTimer);
     
+    // Set a shorter loading time for the animation (4 seconds max)
+    const loadingTimer = setTimeout(() => {
+      setLoading(false);
+    }, 3800);
+    
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', resetTimer);
       window.removeEventListener('keydown', resetTimer);
       clearTimeout(timer);
+      clearTimeout(loadingTimer);
     };
   }, []);
 
@@ -65,6 +72,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           transition={{ duration: 0.8 }}
           className="relative"
         >
+          <ThemeToggle />
           <CinematicGrain />
           
           <Navbar />

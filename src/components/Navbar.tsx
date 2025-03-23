@@ -55,41 +55,39 @@ const Navbar: React.FC = () => {
         scrolled ? 'py-2' : 'py-3'
       }`}
     >
-      <div className={`glass rounded-full px-3 sm:px-4 py-2 flex items-center justify-center transition-all duration-300 ${
+      <div className={`glass rounded-full px-2 md:px-4 py-2 flex items-center transition-all duration-300 ${
         scrolled ? 'shadow-md' : ''
       }`}>
-        <ul className="flex items-center justify-center flex-wrap gap-1">
+        <ul className="flex items-center justify-center space-x-1 md:space-x-2">
           {navItems.map((item, index) => (
             <li key={index}>
               <a 
                 href={item.href}
-                className={`flex items-center gap-2 px-2 sm:px-3 py-2 rounded-full transition-all duration-300 ${
+                className={`group relative flex items-center gap-1 p-2 md:p-2.5 rounded-full transition-all duration-300 ${
                   activeSection === item.href.substring(1) 
                     ? 'bg-secondary'
                     : 'hover:bg-secondary/60'
                 }`}
               >
-                <item.icon size={isMobile ? 18 : 20} />
-                <span className={`text-sm absolute left-10 opacity-0 w-0 whitespace-nowrap overflow-hidden
-                       transition-all duration-300 font-medium group-hover:opacity-100 group-hover:w-auto
-                       group-hover:relative group-hover:left-0 ${
-                         activeSection === item.href.substring(1) ? 'sm:opacity-100 sm:w-auto sm:relative sm:left-0' : ''
-                       }`}>
+                <item.icon size={isMobile ? 16 : 20} className="shrink-0" />
+                <span className={`text-xs md:text-sm absolute top-full left-1/2 -translate-x-1/2 opacity-0 whitespace-nowrap
+                       transition-all duration-300 font-medium group-hover:opacity-100 group-hover:top-[calc(100%+5px)]
+                       ${activeSection === item.href.substring(1) ? 'md:opacity-100 md:relative md:top-0 md:left-0 md:translate-x-0' : 'hidden md:inline-block'}`}>
                   {item.text}
                 </span>
               </a>
             </li>
           ))}
-          <li className="ml-1 sm:ml-2">
+          <li className="ml-1">
             <a 
               href="/resume.pdf" 
               download 
-              className="flex items-center gap-1.5 sm:gap-2 bg-primary text-primary-foreground rounded-full px-3 sm:px-4 py-2 
-                      font-semibold text-sm transition-all duration-300 
+              className="flex items-center gap-1 bg-primary text-primary-foreground rounded-full px-2.5 md:px-4 py-2 
+                      text-xs md:text-sm font-semibold transition-all duration-300 
                       hover:shadow-md active:scale-95"
             >
-              <Download size={isMobile ? 16 : 18} />
-              <span className={isMobile ? "sr-only sm:not-sr-only" : ""}>Resume</span>
+              <Download size={isMobile ? 14 : 18} className="shrink-0" />
+              <span className="hidden md:inline-block">Resume</span>
             </a>
           </li>
         </ul>
