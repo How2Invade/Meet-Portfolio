@@ -26,15 +26,15 @@ const LoadingAnimation: React.FC<LoadingAnimationProps> = ({ onComplete }) => {
         setTimeout(() => {
           setCurrentIndex(prev => prev + 1);
           setIsVisible(true);
-        }, 300); // Faster transition between greetings
+        }, 200); // Faster transition between greetings
       } else {
         clearInterval(interval);
         setIsVisible(false);
         setTimeout(() => {
           onComplete();
-        }, 500);
+        }, 300);
       }
-    }, 700); // Show each greeting for less time
+    }, 600); // Show each greeting for less time
 
     return () => clearInterval(interval);
   }, [currentIndex, onComplete]);
@@ -47,14 +47,14 @@ const LoadingAnimation: React.FC<LoadingAnimationProps> = ({ onComplete }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }} // Faster animations
+            transition={{ duration: 0.2 }} // Faster animations
             className="text-center"
           >
             <motion.h1 
-              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60 cinematic-text"
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.2 }}
             >
               {greetings[currentIndex].text}
             </motion.h1>
@@ -62,7 +62,7 @@ const LoadingAnimation: React.FC<LoadingAnimationProps> = ({ onComplete }) => {
               className="text-sm text-muted-foreground"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.1, duration: 0.3 }}
+              transition={{ delay: 0.1, duration: 0.2 }}
             >
               {greetings[currentIndex].lang}
             </motion.p>

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Film } from 'lucide-react';
+import { ExternalLink, Github, Film, Youtube, Code } from 'lucide-react';
 
 interface Project {
   title: string;
@@ -13,6 +13,7 @@ interface Project {
     demo?: string;
     github?: string;
     watch?: string;
+    youtube?: string;
   };
 }
 
@@ -47,6 +48,7 @@ const projects: Project[] = [
     type: "film",
     links: {
       watch: "#",
+      youtube: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     }
   },
   {
@@ -58,6 +60,26 @@ const projects: Project[] = [
     links: {
       demo: "#",
       github: "#",
+    }
+  },
+  {
+    title: "Echoes of Silence",
+    description: "A short film exploring themes of isolation and connection in the digital age.",
+    tags: ["Short Film", "Drama", "Cinematic"],
+    image: "placeholder.svg",
+    type: "film",
+    links: {
+      youtube: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    }
+  },
+  {
+    title: "Nature's Whisper",
+    description: "A visual poem capturing the subtle beauty of natural landscapes and wildlife.",
+    tags: ["Documentary", "Nature", "Visual Poetry"],
+    image: "placeholder.svg",
+    type: "film",
+    links: {
+      youtube: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     }
   },
 ];
@@ -88,13 +110,21 @@ const Portfolio: React.FC = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true, margin: "-100px" }}
               className="glass group rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300"
+              whileHover={{ y: -5 }}
             >
-              <div className="h-48 bg-muted overflow-hidden">
+              <div className="h-48 bg-muted overflow-hidden relative">
                 <img 
                   src={project.image} 
                   alt={project.title}
                   className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                 />
+                {project.type === 'film' && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="w-16 h-16 rounded-full bg-primary/90 flex items-center justify-center">
+                      <Film className="text-white" size={32} />
+                    </div>
+                  </div>
+                )}
               </div>
               
               <div className="p-6">
@@ -108,7 +138,8 @@ const Portfolio: React.FC = () => {
                             href={project.links.github} 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="p-1 text-muted-foreground hover:text-foreground transition-colors"
+                            className="p-1.5 rounded-full bg-secondary text-muted-foreground hover:text-foreground transition-colors"
+                            title="View GitHub Repository"
                           >
                             <Github size={18} />
                           </a>
@@ -118,7 +149,8 @@ const Portfolio: React.FC = () => {
                             href={project.links.demo} 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="p-1 text-muted-foreground hover:text-foreground transition-colors"
+                            className="p-1.5 rounded-full bg-secondary text-muted-foreground hover:text-foreground transition-colors"
+                            title="View Live Demo"
                           >
                             <ExternalLink size={18} />
                           </a>
@@ -126,12 +158,24 @@ const Portfolio: React.FC = () => {
                       </>
                     ) : (
                       <>
-                        {project.links.watch && (
+                        {project.links.youtube && (
+                          <a 
+                            href={project.links.youtube}
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="p-1.5 rounded-full bg-secondary text-muted-foreground hover:text-foreground transition-colors"
+                            title="Watch on YouTube"
+                          >
+                            <Youtube size={18} />
+                          </a>
+                        )}
+                        {project.links.watch && !project.links.youtube && (
                           <a 
                             href={project.links.watch}
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="p-1 text-muted-foreground hover:text-foreground transition-colors"
+                            className="p-1.5 rounded-full bg-secondary text-muted-foreground hover:text-foreground transition-colors"
+                            title="Watch Film"
                           >
                             <Film size={18} />
                           </a>
@@ -146,6 +190,18 @@ const Portfolio: React.FC = () => {
                 </p>
                 
                 <div className="flex flex-wrap gap-2 mt-4">
+                  {project.type === 'code' && (
+                    <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary-foreground flex items-center gap-1">
+                      <Code size={12} />
+                      Code Project
+                    </span>
+                  )}
+                  {project.type === 'film' && (
+                    <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary-foreground flex items-center gap-1">
+                      <Film size={12} />
+                      Film
+                    </span>
+                  )}
                   {project.tags.map((tag, tagIndex) => (
                     <span 
                       key={tagIndex}
