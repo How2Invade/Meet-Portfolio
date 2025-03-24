@@ -16,7 +16,7 @@ const About: React.FC = () => {
         >
           <h2 className="section-heading">About Me</h2>
           <p className="section-subheading max-w-3xl mx-auto">
-            Passionate about transforming ideas into reality through coding and filmmaking
+          A coder by precision, a filmmaker by passion, an editor by obsession
           </p>
         </motion.div>
 
@@ -31,7 +31,7 @@ const About: React.FC = () => {
               <div className="absolute inset-0 rounded-full bg-gray-400/30 blur-xl"></div>
               <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-primary/10">
                 <div className="w-full h-full bg-muted flex items-center justify-center">
-                  <span className="text-muted-foreground font-medium">Your Photo</span>
+                  <span className="text-muted-foreground font-medium">Meet Photo</span>
                 </div>
               </div>
               <div className="absolute -bottom-2 -right-2 bg-background rounded-full p-2 shadow-md">
@@ -48,7 +48,7 @@ const About: React.FC = () => {
           >
             <h3 className="text-2xl font-semibold mb-4 font-playfair">Meet Mangaonkar</h3>
             <p className="text-muted-foreground mb-6">
-              I am a passionate developer and filmmaker with a love for creating engaging digital experiences and compelling visual stories. My journey in technology and creative arts has allowed me to develop a unique perspective on how these disciplines can complement each other.
+            I excel in academics while actively exploring tech, filmmaking, and creative pursuits. With a strong problem-solving mindset, I blend logic and creativity to craft impactful experiences. Whether in code, storytelling, or editing, I strive for perfection in every detail.
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
@@ -76,11 +76,11 @@ const About: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4 mt-8">
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Phone size={16} />
-                <span>+91 9876543210</span>
+                <span>9969282858</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Mail size={16} />
-                <span>meet.mangaonkar@example.com</span>
+                <span>mangaonkarmeet@gmail.com</span>
               </div>
             </div>
           </motion.div>
