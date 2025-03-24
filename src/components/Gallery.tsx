@@ -57,8 +57,9 @@ const galleryCategories: GalleryCategory[] = [
     title: "GDSC & Rotaract",
     description: "Hosted GDSCs Bit-N-Build Hackathon, driving innovation and collaboration, and contributed to Rotaracts HSR 7 Marathon, promoting community spirit ,Memorable moments from clubs ",
     images: [
-      { src: "mom.jpg", alt: "Award Ceremony", category: "events" },
+      
       { src: "sam.jpg", alt: "Conference Talk", category: "events" },
+      { src: "mom.jpg", alt: "Award Ceremony", category: "events" },
       { src: "ste.jpg", alt: "Networking Event", category: "events" },
       { src: "mans.jpg", alt: "Panel Discussion", category: "events" },
     ]
