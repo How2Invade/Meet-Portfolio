@@ -28,10 +28,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     window.addEventListener('mousemove', resetTimer);
     window.addEventListener('keydown', resetTimer);
     
-    // Set a shorter loading time for the animation (4 seconds max)
+    // Set a shorter loading time for the animation (2.5 seconds max)
     const loadingTimer = setTimeout(() => {
       setLoading(false);
-    }, 3800);
+    }, 2500);
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
