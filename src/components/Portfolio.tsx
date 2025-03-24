@@ -95,7 +95,7 @@ const projects: Project[] = [
     }
   },
   
-
+]
 const Portfolio: React.FC = () => {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
