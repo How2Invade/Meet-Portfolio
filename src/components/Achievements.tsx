@@ -15,28 +15,28 @@ interface Achievement {
 
 const achievements: Achievement[] = [
   {
-    title: "First Place - National Coding Competition",
-    description: "Won first place at the National Code Challenge for developing an innovative solution for urban mobility.",
-    year: "2023",
+    title: "First Place - Python Coding Competition",
+    description: "Won first place at the Python Coding Competition for developing an innovative solution for Indian Culture.",
+    year: "2025",
     icon: Trophy,
-    details: "This project focused on using AI algorithms to optimize traffic flow in congested urban areas. The solution reduced simulated congestion by 32% and was recognized for its innovative approach to a real-world problem.",
-    certificate: "placeholder.svg"
+    details: "Participated in a Python coding competition focused on India's rich cultural diversity. Developed an interactive app that showcases various aspects of Indian culture, integrating engaging content and intuitive design. Blended technical skills with cultural storytelling to create an informative and immersive experience.",
+    certificate: "ccp.jpg"
   },
   {
     title: "Best Short Film Award",
-    description: "Received recognition for directing and producing a compelling short documentary on environmental conservation.",
-    year: "2022",
+    description: "Wake Up compelling short film on Breaking the loop in life by COMPS A",
+    year: "2025",
     icon: Award,
-    details: "The documentary, titled 'Our Fading World', was shot over six months across three different ecosystems. It explored the impact of climate change on local communities and wildlife, combining intimate personal stories with breathtaking cinematography.",
-    certificate: "placeholder.svg"
+    details: "Directed and Shot a compelling short film on breaking life's loops, earning recognition for its impactful storytelling within COMPS A.",
+    certificate: "cin.jpg"
   },
   {
-    title: "Outstanding Technical Innovation",
-    description: "Awarded for creating a novel algorithm that improved processing efficiency by 40% in legacy systems.",
-    year: "2021",
+    title: "UI/UX Competition by GDSC",
+    description: "Participated in FRCRCE’s UI/UX Competition, designing innovative solutions to real-world problems as Team meetmangaonkar.",
+    year: "2025",
     icon: Medal,
-    details: "The algorithm I developed rethought how data was processed in financial systems, reducing computation time and resource usage dramatically. This innovation has since been implemented in several enterprise-level applications.",
-    certificate: "placeholder.svg"
+    details: "UI/UX Competition – Solve Real-Life Problems | FRCRCE, Mumbai | Solo Participant Post - https://www.linkedin.com/posts/meet-mangaonkar-363640329_uiux-designthinking-problemsolving-activity-7270799667884421121-aGsS?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFLanfsB_48SCdUOa31VPIC1ZdmpkLmrDwk",
+    certificate: "UIUX.jpg"
   },
   {
     title: "Hackathon Champion",
