@@ -63,6 +63,17 @@ const projects: Project[] = [
     }
   },
   {
+    title: "Shop Nest",
+    description: "This project promotes sustainable waste management, reduces litter, and improves recycling in urban communities. It also encourages volunteering in beach cleanup activities, fostering cleaner and healthier environments.",
+    tags: ["JavaScript", "API", "Chart.js"],
+    image: "nest.png",
+    type: "code",
+    links: {
+      demo: "https://kzmqj0jiwkguqgtv9oi1.lite.vusercontent.net/",
+      github: "https://github.com/How2Invade/Shop-Nest",
+    }
+  },
+  {
     title: "Eco Bloom",
     description: "This project promotes sustainable waste management, reduces litter, and improves recycling in urban communities. It also encourages volunteering in beach cleanup activities, fostering cleaner and healthier environments.",
     tags: ["JavaScript", "API", "Chart.js"],
@@ -73,15 +84,16 @@ const projects: Project[] = [
       github: "https://github.com/How2Invade/Eco-Bloom-",
     }
   },
+  
   {
-    title: "Shop Nest",
-    description: "This project promotes sustainable waste management, reduces litter, and improves recycling in urban communities. It also encourages volunteering in beach cleanup activities, fostering cleaner and healthier environments.",
-    tags: ["JavaScript", "API", "Chart.js"],
+    title: "Virtual India",
+    description: "Immerse yourself in 3D virtual tours of India's most breathtaking destinations from the comfort of your home.",
+    tags: ["JavaScript", "API", "Three.js"],
     image: "nest.png",
     type: "code",
     links: {
-      demo: "https://kzmqj0jiwkguqgtv9oi1.lite.vusercontent.net/",
-      github: "https://github.com/How2Invade/Shop-Nest",
+      demo: "https://startling-lokum-15cac5.netlify.app/",
+      github: "https://github.com/How2Invade/Virtual-India",
     }
   },
   {
