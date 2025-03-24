@@ -68,7 +68,7 @@ const projects: Project[] = [
     image: "ecob.png",
     type: "code",
     links: {
-      demo: "https://flit5sssg9t0djpz.vercel.app/",
+      demo: "https://flit5sssg9t0djpz.vercel.app/ ",
       github: "https://github.com/How2Invade/Eco-Bloom-",
     }
   },
