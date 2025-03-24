@@ -58,6 +58,7 @@ const projects: Project[] = [
     image: "usb.jpg",
     type: "film",
     links: {
+      watch: "#",
       youtube: "https://youtu.be/xrlxXv1WIwc?si=XYD48UijeMod6mYM",
     }
   },
