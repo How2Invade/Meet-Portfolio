@@ -20,24 +20,24 @@ interface Project {
 const projects: Project[] = [
   {
     title: "Personal Portfolio Website",
-    description: "An elegant, Apple-inspired portfolio website with smooth animations and responsive design.",
+    description: "An elegant, minimalistic portfolio website with smooth animations and responsive design.",
     tags: ["React", "Tailwind CSS", "Framer Motion"],
-    image: "placeholder.svg",
+    image: "prof.png",
     type: "code",
     links: {
-      demo: "#",
-      github: "#",
+      demo: "https://meetmangaonkar.vercel.app/",
+      github: "https://github.com/How2Invade/Meet-Portfolio",
     }
   },
   {
-    title: "E-Commerce Platform",
+    title: "Health Vault",
     description: "A full-featured e-commerce solution with product filtering, cart functionality, and payment processing.",
     tags: ["React", "Node.js", "MongoDB"],
     image: "placeholder.svg",
     type: "code",
     links: {
-      demo: "#",
-      github: "#",
+      demo: "https://unplug-health-vault.vercel.app/",
+      github: "https://github.com/How2Invade/Unplug---Health-Vault",
     }
   },
   {
