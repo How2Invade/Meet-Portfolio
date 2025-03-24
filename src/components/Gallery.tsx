@@ -303,7 +303,6 @@ const Gallery: React.FC = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
-              onClick={closeLightbox}
             >
               <motion.div
                 initial={{ scale: 0.9, opacity: 0 }}
@@ -348,11 +347,15 @@ const Gallery: React.FC = () => {
                   <ChevronRight size={24} />
                 </motion.button>
                 
+                {/* Fix for the close button - ensuring it works properly */}
                 <motion.button 
                   className="absolute top-4 right-4 p-2 rounded-full bg-black/30 hover:bg-black/50 transition-colors text-white"
                   whileHover={{ scale: 1.1, rotate: 90 }}
                   whileTap={{ scale: 0.9 }}
-                  onClick={closeLightbox}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    closeLightbox();
+                  }}
                 >
                   <X size={24} />
                 </motion.button>

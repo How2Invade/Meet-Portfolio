@@ -1,7 +1,8 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Trophy, Award, Medal, ChevronRight, ExternalLink } from 'lucide-react';
+import { Trophy, Award, Medal, ChevronRight, ExternalLink, X } from 'lucide-react';
+import { Dialog, DialogContent, DialogOverlay } from '@/components/ui/dialog';
 
 interface Achievement {
   title: string;
@@ -45,22 +46,38 @@ const achievements: Achievement[] = [
     details: "Our team created a mobile platform that connected rural patients with medical professionals through a low-bandwidth video solution. The project was praised for its attention to real-world constraints and elegant implementation.",
     certificate: "placeholder.svg"
   },
+  {
+    title: "Excellence in Film Editing",
+    description: "Recognized for exceptional editing work on an independent drama film that screened at multiple festivals.",
+    year: "2019",
+    icon: Award,
+    details: "The film required innovative editing techniques to tell a non-linear story. My work helped create a compelling emotional journey that resonated with audiences across different cultural backgrounds.",
+    certificate: "placeholder.svg"
+  },
+  {
+    title: "Digital Innovation Award",
+    description: "Honored for developing a breakthrough approach to digital storytelling using emerging technologies.",
+    year: "2018",
+    icon: Medal,
+    details: "This project combined interactive media with traditional narrative structures to create an immersive storytelling experience. The technique has since been adopted by several media companies for their digital content strategies.",
+    certificate: "placeholder.svg"
+  },
 ];
 
 const Achievements: React.FC = () => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-  const [viewCertificate, setViewCertificate] = useState<string | null>(null);
-
+  const [openCertificate, setOpenCertificate] = useState<string | null>(null);
+  
   const toggleExpand = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index);
   };
 
-  const openCertificate = (certificate: string) => {
-    setViewCertificate(certificate);
+  const viewCertificate = (certificate: string) => {
+    setOpenCertificate(certificate);
   };
 
   const closeCertificate = () => {
-    setViewCertificate(null);
+    setOpenCertificate(null);
   };
 
   // Animation variants
@@ -85,6 +102,13 @@ const Achievements: React.FC = () => {
         stiffness: 300
       }
     }
+  };
+  
+  const certificatePreviewVariants = {
+    initial: { scale: 0.9, opacity: 0 },
+    animate: { scale: 1, opacity: 1, transition: { duration: 0.3 } },
+    hover: { scale: 1.05, transition: { duration: 0.2 } },
+    tap: { scale: 0.98, transition: { duration: 0.1 } }
   };
 
   return (
@@ -163,16 +187,33 @@ const Achievements: React.FC = () => {
                       </p>
                       
                       {achievement.certificate && (
-                        <motion.button
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          onClick={() => openCertificate(achievement.certificate!)}
-                          className="flex items-center gap-2 text-primary font-medium mt-2 px-4 py-2 rounded-full border border-primary/20 hover:bg-primary/5 transition-all"
-                        >
-                          <Trophy size={16} />
-                          View Certificate
-                          <ExternalLink size={14} />
-                        </motion.button>
+                        <div className="mt-4">
+                          <p className="text-sm font-medium mb-3 text-primary">Certificate Preview:</p>
+                          <motion.div
+                            variants={certificatePreviewVariants}
+                            initial="initial"
+                            animate="animate"
+                            whileHover="hover"
+                            whileTap="tap"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              viewCertificate(achievement.certificate!);
+                            }}
+                            className="relative w-full max-w-xs mx-auto cursor-pointer overflow-hidden rounded-lg border border-primary/20"
+                          >
+                            <img 
+                              src={achievement.certificate} 
+                              alt={`${achievement.title} Certificate`} 
+                              className="w-full h-auto"
+                            />
+                            <div className="absolute inset-0 bg-black/30 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
+                              <div className="bg-white/90 text-primary font-medium px-4 py-2 rounded-full flex items-center">
+                                <ExternalLink size={16} className="mr-2" />
+                                View Certificate
+                              </div>
+                            </div>
+                          </motion.div>
+                        </div>
                       )}
                     </div>
                   </motion.div>
@@ -183,41 +224,33 @@ const Achievements: React.FC = () => {
         </div>
       </div>
 
-      {/* Certificate Modal */}
-      <AnimatePresence>
-        {viewCertificate && (
+      {/* Certificate Modal using shadcn Dialog */}
+      <Dialog open={!!openCertificate} onOpenChange={(open) => !open && closeCertificate()}>
+        <DialogOverlay className="bg-black/80 backdrop-blur-sm" />
+        <DialogContent className="max-w-4xl w-[90vw] p-1 border-none bg-transparent">
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
-            onClick={closeCertificate}
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            transition={{ type: "spring", damping: 15 }}
+            className="relative w-full bg-card p-1 rounded-xl overflow-hidden"
           >
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              transition={{ type: "spring", damping: 15 }}
-              className="relative max-w-4xl w-full bg-card p-1 rounded-xl overflow-hidden"
-              onClick={(e) => e.stopPropagation()}
+            <img 
+              src={openCertificate || ''} 
+              alt="Certificate" 
+              className="w-full h-auto object-contain max-h-[85vh]"
+            />
+            <motion.button
+              className="absolute top-4 right-4 bg-background rounded-full p-2 shadow-lg text-foreground"
+              whileHover={{ rotate: 90, scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={closeCertificate}
             >
-              <img 
-                src={viewCertificate} 
-                alt="Certificate" 
-                className="w-full h-auto"
-              />
-              <motion.button
-                className="absolute top-4 right-4 bg-background rounded-full p-2 shadow-lg"
-                whileHover={{ rotate: 90, scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={closeCertificate}
-              >
-                <ChevronRight size={24} className="rotate-45" />
-              </motion.button>
-            </motion.div>
+              <X size={24} />
+            </motion.button>
           </motion.div>
-        )}
-      </AnimatePresence>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };

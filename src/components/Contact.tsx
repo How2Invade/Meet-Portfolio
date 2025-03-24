@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { 
@@ -8,6 +9,7 @@ import {
   Instagram, 
   MessageSquare
 } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
 
 const socialLinks = [
   {
@@ -42,39 +44,40 @@ const ContactWidget = ({ icon: Icon, label, value, href, color }) => {
     : value;
 
   return (
-    <a 
+    <motion.a 
       href={href} 
       target={href.startsWith('http') ? "_blank" : undefined}
       rel={href.startsWith('http') ? "noopener noreferrer" : undefined}
+      whileHover={{ y: -5, scale: 1.03 }}
+      whileTap={{ scale: 0.98 }}
       className="group w-full"
     >
-      <motion.div 
-        whileHover={{ y: -5, scale: 1.03 }}
-        whileTap={{ scale: 0.98 }}
-        className={`flex items-center p-4 rounded-xl ${color} transition-all duration-300 shadow-sm hover:shadow-md`}
-      >
-        <div className="mr-4 shrink-0">
-          <Icon size={24} />
-        </div>
-        <div className="flex flex-col min-w-0">
-          <span className="text-sm font-medium opacity-80">{label}</span>
-          <span className="font-semibold truncate">{displayValue}</span>
-        </div>
-      </motion.div>
-    </a>
+      <Card className={`border-none overflow-hidden ${color} transition-all duration-300 shadow-md hover:shadow-xl`}>
+        <CardContent className="p-6 flex items-center">
+          <div className="mr-4 p-3 rounded-full bg-background/50 backdrop-blur-sm">
+            <Icon size={28} />
+          </div>
+          <div className="flex flex-col min-w-0">
+            <span className="text-sm font-medium opacity-80">{label}</span>
+            <span className="font-semibold text-lg truncate">{displayValue}</span>
+          </div>
+        </CardContent>
+      </Card>
+    </motion.a>
   );
 };
 
-const SocialLink = ({ icon: Icon, url, color }) => (
+const SocialLink = ({ icon: Icon, name, url, color }) => (
   <motion.a 
     href={url}
     target="_blank"
     rel="noopener noreferrer"
     whileHover={{ scale: 1.1, rotate: 5 }}
     whileTap={{ scale: 0.9 }}
-    className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${color}`}
+    className={`flex flex-col items-center justify-center p-6 rounded-xl ${color} transition-all duration-300 shadow-md hover:shadow-xl`}
   >
-    <Icon size={22} />
+    <Icon size={32} className="mb-2" />
+    <span className="font-medium">{name}</span>
   </motion.a>
 );
 
@@ -95,22 +98,22 @@ const Contact: React.FC = () => {
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="max-w-4xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true, margin: "-100px" }}
           >
-            <h3 className="text-2xl font-semibold mb-6">Connect With Me</h3>
+            <h3 className="text-2xl font-semibold mb-8 text-center font-playfair">Connect With Me</h3>
             
-            <div className="mb-8">
-              <h4 className="text-lg font-medium mb-4">Social Profiles</h4>
-              <div className="flex gap-4 flex-wrap mb-8">
+            <div className="mb-10">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
                 {socialLinks.map((social, index) => (
                   <SocialLink 
                     key={index}
                     icon={social.icon}
+                    name={social.name}
                     url={social.url}
                     color={social.color}
                   />
@@ -118,8 +121,7 @@ const Contact: React.FC = () => {
               </div>
             </div>
             
-            <h4 className="text-lg font-medium mb-4">Contact Information</h4>
-            <div className="grid grid-cols-1 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <ContactWidget 
                 icon={Mail} 
                 label="Email"
@@ -136,73 +138,19 @@ const Contact: React.FC = () => {
                 color="bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground"
               />
             </div>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">
-                    Your Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
-                    placeholder="Enter your name"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    Your Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
-                    placeholder="Enter your email"
-                  />
-                </div>
-              </div>
-              
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium mb-2">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
-                  placeholder="What is this regarding?"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  rows={5}
-                  className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all resize-none"
-                  placeholder="Write your message here..."
-                ></textarea>
-              </div>
-              
-              <motion.button
-                type="submit"
-                className="apple-button w-full flex justify-center"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Send Message
-              </motion.button>
-            </form>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="mt-16 text-center"
+            >
+              <p className="text-muted-foreground italic">
+                "The best way to predict the future is to create it."
+              </p>
+              <p className="text-sm mt-2 font-medium">— Let's build something amazing together</p>
+            </motion.div>
           </motion.div>
         </div>
       </div>
