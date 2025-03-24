@@ -88,7 +88,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 viewport={{ once: true }}
                 className="text-muted-foreground text-sm"
               >
-                © {new Date().getFullYear()} Meet Mangaonkar. All rights reserved.
+                © {new Date().getFullYear()} Handcrafted to perfection, with passion and precision —by Meet Mangaonkar.
               </motion.p>
             </div>
           </footer>
