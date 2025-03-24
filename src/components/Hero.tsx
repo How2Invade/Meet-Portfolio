@@ -55,8 +55,8 @@ const Hero: React.FC = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8"
           >
             <motion.a 
-              href="public/Resume Meet Mangaonkar.pdf" 
-              className="apple-button flex items-center gap-2 px-4 py-2 rounded-lg bg-black text-white hover:bg-gray-800 transition-all"
+              href="https://drive.google.com/drive/folders/1gF7A6TrtEhowdzi9piM1Uwi2EsNszG-W?usp=sharing" 
+              className="flex items-center gap-2 px-5 py-3 rounded-full bg-black text-white font-medium hover:bg-gray-900 transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               download
@@ -65,7 +65,7 @@ const Hero: React.FC = () => {
               Download Resume
             </motion.a>
             <motion.a 
-              href="src/components/Contact.tsx" 
+              href="https://www.linkedin.com/in/meet-mangaonkar-363640329/" 
               className="text-muted-foreground hover:text-foreground transition-colors duration-300"
               whileHover={{ x: 5 }}
             >
