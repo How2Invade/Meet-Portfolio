@@ -3,17 +3,17 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const greetings = [
-  { text: "Hello", lang: "English" },
-  { text: "नमस्ते", lang: "Hindi" },
-  { text: "こんにちは", lang: "Japanese" },
-  { text: "Bonjour", lang: "French" },
-  { text: "Hola", lang: "Spanish" },
-  { text: "안녕하세요", lang: "Korean" },
-  { text: "Ciao", lang: "Italian" },
-  { text: "مرحبا", lang: "Arabic" },
-  { text: "Olá", lang: "Portuguese" },
-  { text: "Hallo", lang: "German" },
-  { text: "Привет", lang: "Russian" },
+  { text: "Hello" },
+  { text: "नमस्ते" },
+  { text: "こんにちは" },
+  { text: "Bonjour" },
+  { text: "Hola" },
+  { text: "안녕하세요" },
+  { text: "Ciao" },
+  { text: "مرحبا" },
+  { text: "Olá" },
+  { text: "Hallo" },
+  { text: "Привет" },
 ];
 
 interface LoadingAnimationProps {
