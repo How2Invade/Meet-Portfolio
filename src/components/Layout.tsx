@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import LoadingAnimation from './LoadingAnimation';
-import ThemeToggle from './ThemeToggle';
 import { ArrowUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -72,7 +71,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           transition={{ duration: 0.8 }}
           className="relative"
         >
-          <ThemeToggle />
           <CinematicGrain />
           
           <Navbar />
