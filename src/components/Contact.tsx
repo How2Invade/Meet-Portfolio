@@ -15,25 +15,25 @@ const socialLinks = [
   {
     name: "LinkedIn",
     icon: Linkedin,
-    url: "#",
+    url: "https://www.linkedin.com/in/meet-mangaonkar-363640329/",
     color: "bg-[#0077B5]/10 text-[#0077B5] hover:bg-[#0077B5] hover:text-white"
   },
   {
     name: "GitHub",
     icon: Github,
-    url: "#",
+    url: "https://github.com/How2Invade?tab=repositories",
     color: "bg-[#333]/10 text-[#333] hover:bg-[#333] hover:text-white dark:bg-[#333]/20 dark:text-gray-200 dark:hover:bg-[#333]"
   },
   {
     name: "Instagram",
     icon: Instagram,
-    url: "#",
+    url: "https://www.instagram.com/meetmangaonkar/?hl=en",
     color: "bg-[#E1306C]/10 text-[#E1306C] hover:bg-[#E1306C] hover:text-white"
   },
   {
     name: "WhatsApp",
     icon: MessageSquare,
-    url: "https://wa.me/919876543210",
+    url: "https://wa.me/9969282858",
     color: "bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366] hover:text-white"
   }
 ];
@@ -125,16 +125,16 @@ const Contact: React.FC = () => {
               <ContactWidget 
                 icon={Mail} 
                 label="Email"
-                value="meet.mangaonkar@example.com"
-                href="mailto:meet.mangaonkar@example.com"
+                value="mangaonkarmeet@gmail.com"
+                href="mailto:mangaonkarmeet@gmail.com"
                 color="bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground"
               />
               
               <ContactWidget 
                 icon={Phone} 
                 label="Phone"
-                value="+91 98765 43210"
-                href="tel:+919876543210"
+                value="+91 9969282858"
+                href="tel:+919969282858"
                 color="bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground"
               />
             </div>
@@ -147,9 +147,9 @@ const Contact: React.FC = () => {
               className="mt-16 text-center"
             >
               <p className="text-muted-foreground italic">
-                "The best way to predict the future is to create it."
+                "Crafted with vision, designed with purpose"
               </p>
-              <p className="text-sm mt-2 font-medium">— Let's build something amazing together</p>
+              <p className="text-sm mt-2 font-medium">— Meet Mangaonkar</p>
             </motion.div>
           </motion.div>
         </div>
