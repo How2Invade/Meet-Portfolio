@@ -52,37 +52,49 @@ const projects: Project[] = [
     }
   },
   {
-    title: "Weather Dashboard",
-    description: "Real-time weather application with forecast visualization and location-based features.",
+    title: "USB - Until Silence Breaks",
+    description: "A visually immersive short film exploring self-discovery, mentorship, and unspoken emotions, leaving a lasting impact through minimal dialogue and layered storytelling.",
+    tags: ["Short Film", "Emotional", "Cinematic"],
+    image: "usb.jpg",
+    type: "film",
+    links: {
+      youtube: "https://youtu.be/xrlxXv1WIwc?si=XYD48UijeMod6mYM",
+    }
+  },
+  {
+    title: "Eco Bloom",
+    description: "This project promotes sustainable waste management, reduces litter, and improves recycling in urban communities. It also encourages volunteering in beach cleanup activities, fostering cleaner and healthier environments.",
     tags: ["JavaScript", "API", "Chart.js"],
-    image: "placeholder.svg",
+    image: "ecob.png",
     type: "code",
     links: {
-      demo: "#",
-      github: "#",
+      demo: "https://flit5sssg9t0djpz.vercel.app/",
+      github: "https://github.com/How2Invade/Eco-Bloom-",
     }
   },
   {
-    title: "Echoes of Silence",
-    description: "A short film exploring themes of isolation and connection in the digital age.",
-    tags: ["Short Film", "Drama", "Cinematic"],
-    image: "placeholder.svg",
-    type: "film",
+    title: "Shop Nest",
+    description: "This project promotes sustainable waste management, reduces litter, and improves recycling in urban communities. It also encourages volunteering in beach cleanup activities, fostering cleaner and healthier environments.",
+    tags: ["JavaScript", "API", "Chart.js"],
+    image: "nest.png",
+    type: "code",
     links: {
-      youtube: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      demo: "https://kzmqj0jiwkguqgtv9oi1.lite.vusercontent.net/",
+      github: "https://github.com/How2Invade/Shop-Nest",
     }
   },
   {
-    title: "Nature's Whisper",
-    description: "A visual poem capturing the subtle beauty of natural landscapes and wildlife.",
-    tags: ["Documentary", "Nature", "Visual Poetry"],
-    image: "placeholder.svg",
+    title: "Chitti",
+    description: "A short film exploring themes of isolation and A visually immersive, dialogue-light narrative that relies on symbolism and deep emotions to drive the story forward.",
+    tags: ["Short Film", "Psychological Drama", "2 days"],
+    image: "thumbnail chiti.png",
     type: "film",
     links: {
-      youtube: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      watch: "#",
+      youtube: "https://youtu.be/8PJj6Heegmk",
     }
   },
-];
+  
 
 const Portfolio: React.FC = () => {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
