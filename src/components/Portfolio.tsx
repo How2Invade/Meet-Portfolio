@@ -92,7 +92,7 @@ const projects: Project[] = [
     type: "film",
     links: {
       watch: "#",
-      youtube: "https://youtu.be/8PJj6Heegmk",
+      youtube: "https://youtu.be/8PJj6Heegmk ",
     }
   },
   
