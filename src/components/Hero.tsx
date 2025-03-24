@@ -40,7 +40,8 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="section-subheading"
           >
-            I create beautiful digital experiences through code and tell compelling stories through film.
+            Coder. Student.
+            Filmmaker. Editor.
           </motion.p>
           
           <motion.div 
@@ -64,7 +65,7 @@ const Hero: React.FC = () => {
               Download Resume
             </motion.a>
             <motion.a 
-              href="#contact" 
+              href="file:///C:/Users/Meet/Downloads/Resume%20Meet%20Mangaonkar.pdf" 
               className="text-muted-foreground hover:text-foreground transition-colors duration-300"
               whileHover={{ x: 5 }}
             >
@@ -116,7 +117,7 @@ const Hero: React.FC = () => {
                 <h3 className="text-xl font-semibold mb-2">Featured Project</h3>
                 <p className="text-muted-foreground mb-4">Check out my latest work showcasing cinematic storytelling and digital creativity.</p>
                 <motion.a 
-                  href="#portfolio" 
+                  href="https://youtu.be/8PJj6Heegmk" 
                   className="inline-flex items-center text-primary hover:text-primary/80 transition-colors"
                   whileHover={{ x: 5 }}
                   transition={{ duration: 0.2 }}
