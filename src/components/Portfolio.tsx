@@ -1,7 +1,7 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Film, Youtube, Code } from 'lucide-react';
+import { ExternalLink, Github, Film, Youtube, Code, PlusCircle } from 'lucide-react';
 
 interface Project {
   title: string;
@@ -85,6 +85,16 @@ const projects: Project[] = [
 ];
 
 const Portfolio: React.FC = () => {
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+
+  const openVideo = (youtubeUrl: string) => {
+    setSelectedVideo(youtubeUrl);
+  };
+
+  const closeVideo = () => {
+    setSelectedVideo(null);
+  };
+
   return (
     <section id="portfolio" className="section">
       <div className="container mx-auto">
@@ -110,16 +120,22 @@ const Portfolio: React.FC = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true, margin: "-100px" }}
               className="glass group rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300"
-              whileHover={{ y: -5 }}
+              whileHover={{ 
+                y: -8,
+                transition: { duration: 0.3 }
+              }}
             >
-              <div className="h-48 bg-muted overflow-hidden relative">
+              <div className="h-56 bg-muted overflow-hidden relative">
                 <img 
                   src={project.image} 
                   alt={project.title}
                   className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                 />
                 {project.type === 'film' && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div 
+                    className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
+                    onClick={() => project.links.youtube && openVideo(project.links.youtube)}
+                  >
                     <div className="w-16 h-16 rounded-full bg-primary/90 flex items-center justify-center">
                       <Film className="text-white" size={32} />
                     </div>
@@ -129,7 +145,7 @@ const Portfolio: React.FC = () => {
               
               <div className="p-6">
                 <div className="flex justify-between items-start mb-3">
-                  <h3 className="text-xl font-semibold">{project.title}</h3>
+                  <h3 className="text-xl font-semibold font-playfair">{project.title}</h3>
                   <div className="flex gap-1">
                     {project.type === 'code' ? (
                       <>
@@ -159,15 +175,13 @@ const Portfolio: React.FC = () => {
                     ) : (
                       <>
                         {project.links.youtube && (
-                          <a 
-                            href={project.links.youtube}
-                            target="_blank" 
-                            rel="noopener noreferrer"
+                          <button 
+                            onClick={() => openVideo(project.links.youtube!)}
                             className="p-1.5 rounded-full bg-secondary text-muted-foreground hover:text-foreground transition-colors"
                             title="Watch on YouTube"
                           >
                             <Youtube size={18} />
-                          </a>
+                          </button>
                         )}
                         {project.links.watch && !project.links.youtube && (
                           <a 
@@ -215,6 +229,30 @@ const Portfolio: React.FC = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* YouTube Video Modal */}
+        {selectedVideo && (
+          <div 
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+            onClick={closeVideo}
+          >
+            <div className="relative max-w-5xl w-full aspect-video">
+              <iframe 
+                src={`${selectedVideo.replace('watch?v=', 'embed/')}?autoplay=1`}
+                title="YouTube video player" 
+                className="w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen
+              ></iframe>
+              <button 
+                className="absolute -top-10 right-0 text-white p-2"
+                onClick={closeVideo}
+              >
+                <PlusCircle className="rotate-45" size={32} />
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -11,8 +11,7 @@ import {
   Sun,
   GraduationCap,
   LightbulbIcon,
-  FolderGit2,
-  Mail
+  FolderGit2
 } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { motion } from 'framer-motion';
@@ -62,7 +61,7 @@ const Navbar: React.FC = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.2 }}
-      className={`fixed top-5 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-auto`}
+      className="fixed top-5 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-auto"
     >
       <Dock className={`items-end pb-3 rounded-full ${scrolled ? 'shadow-md' : ''}`}>
         {navItems.map((item, idx) => (

@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Camera, ExternalLink } from 'lucide-react';
 
 // Define category collections
 interface GalleryImage {
@@ -28,6 +28,8 @@ const galleryCategories: GalleryCategory[] = [
       { src: "placeholder.svg", alt: "Code Workshop", category: "coding" },
       { src: "placeholder.svg", alt: "Tech Conference", category: "coding" },
       { src: "placeholder.svg", alt: "Pair Programming", category: "coding" },
+      { src: "placeholder.svg", alt: "Coding Competition", category: "coding" },
+      { src: "placeholder.svg", alt: "Team Collaboration", category: "coding" },
     ]
   },
   {
@@ -39,6 +41,8 @@ const galleryCategories: GalleryCategory[] = [
       { src: "placeholder.svg", alt: "Camera Setup", category: "filmmaking" },
       { src: "placeholder.svg", alt: "Directing", category: "filmmaking" },
       { src: "placeholder.svg", alt: "Post-Production", category: "filmmaking" },
+      { src: "placeholder.svg", alt: "Location Scouting", category: "filmmaking" },
+      { src: "placeholder.svg", alt: "Script Reading", category: "filmmaking" },
     ]
   },
   {
@@ -50,6 +54,8 @@ const galleryCategories: GalleryCategory[] = [
       { src: "placeholder.svg", alt: "Conference Talk", category: "events" },
       { src: "placeholder.svg", alt: "Networking Event", category: "events" },
       { src: "placeholder.svg", alt: "Panel Discussion", category: "events" },
+      { src: "placeholder.svg", alt: "Industry Meetup", category: "events" },
+      { src: "placeholder.svg", alt: "Award Reception", category: "events" },
     ]
   }
 ];
@@ -94,6 +100,47 @@ const Gallery: React.FC = () => {
       : (selectedImage - 1 + images.length) % images.length;
       
     setSelectedImage(newIndex);
+  };
+
+  // Animation variants
+  const categoryVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: (i: number) => ({
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.4,
+        type: "spring",
+        stiffness: 100
+      }
+    }),
+    hover: {
+      scale: 1.03,
+      transition: {
+        duration: 0.2,
+        type: "spring",
+        stiffness: 300
+      }
+    }
+  };
+
+  const imageVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.05,
+        duration: 0.3
+      }
+    }),
+    hover: {
+      scale: 1.05,
+      transition: {
+        duration: 0.2
+      }
+    }
   };
 
   return (
@@ -166,14 +213,16 @@ const Gallery: React.FC = () => {
               {galleryCategories.map((category, index) => (
                 <motion.div
                   key={category.name}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  custom={index}
+                  initial="hidden"
+                  whileInView="visible"
+                  whileHover="hover"
+                  variants={categoryVariants}
+                  viewport={{ once: true, margin: "-100px" }}
                   className="glass overflow-hidden rounded-xl cursor-pointer group"
                   onClick={() => openCategory(category.name)}
-                  whileHover={{ scale: 1.03 }}
                 >
-                  <div className="aspect-[4/3] overflow-hidden">
+                  <div className="aspect-[3/2] overflow-hidden">
                     <img 
                       src={category.images[0]?.src || "placeholder.svg"} 
                       alt={category.title}
@@ -182,7 +231,7 @@ const Gallery: React.FC = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-80"></div>
                   </div>
                   <div className="absolute bottom-0 p-6 text-white">
-                    <h3 className="text-2xl font-bold mb-2">{category.title}</h3>
+                    <h3 className="text-2xl font-bold mb-2 font-playfair">{category.title}</h3>
                     <p className="text-white/80 text-sm">{category.description}</p>
                     <span className="mt-3 inline-flex items-center text-sm font-semibold">
                       View gallery <ChevronRight size={16} className="ml-1" />
@@ -210,7 +259,7 @@ const Gallery: React.FC = () => {
               
               {/* Category header */}
               <div className="mb-8 text-center">
-                <h3 className="text-2xl font-bold mb-3">{galleryCategories.find(c => c.name === selectedCategory)?.title}</h3>
+                <h3 className="text-2xl font-bold mb-3 font-playfair">{galleryCategories.find(c => c.name === selectedCategory)?.title}</h3>
                 <p className="text-muted-foreground">{galleryCategories.find(c => c.name === selectedCategory)?.description}</p>
               </div>
               
@@ -219,18 +268,26 @@ const Gallery: React.FC = () => {
                 {galleryCategories.find(c => c.name === selectedCategory)?.images.map((image, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
-                    className="aspect-square rounded-lg overflow-hidden cursor-pointer"
+                    custom={index}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    whileHover="hover"
+                    variants={imageVariants}
+                    className="aspect-square rounded-lg overflow-hidden cursor-pointer relative group"
                     onClick={() => openLightbox(index)}
-                    whileHover={{ scale: 1.03 }}
                   >
                     <img 
                       src={image.src} 
                       alt={image.alt} 
                       className="w-full h-full object-cover"
                     />
+                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <Camera className="text-white" size={32} />
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                      <p className="text-white text-sm font-medium">{image.alt}</p>
+                    </div>
                   </motion.div>
                 ))}
               </div>
@@ -267,32 +324,38 @@ const Gallery: React.FC = () => {
                 />
                 
                 {/* Navigation controls */}
-                <button 
+                <motion.button 
                   className="absolute top-1/2 left-4 -translate-y-1/2 p-2 rounded-full bg-black/30 hover:bg-black/50 transition-colors text-white"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
                   onClick={(e) => {
                     e.stopPropagation();
                     navigateImage('prev');
                   }}
                 >
                   <ChevronLeft size={24} />
-                </button>
+                </motion.button>
                 
-                <button 
+                <motion.button 
                   className="absolute top-1/2 right-4 -translate-y-1/2 p-2 rounded-full bg-black/30 hover:bg-black/50 transition-colors text-white"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
                   onClick={(e) => {
                     e.stopPropagation();
                     navigateImage('next');
                   }}
                 >
                   <ChevronRight size={24} />
-                </button>
+                </motion.button>
                 
-                <button 
+                <motion.button 
                   className="absolute top-4 right-4 p-2 rounded-full bg-black/30 hover:bg-black/50 transition-colors text-white"
+                  whileHover={{ scale: 1.1, rotate: 90 }}
+                  whileTap={{ scale: 0.9 }}
                   onClick={closeLightbox}
                 >
                   <X size={24} />
-                </button>
+                </motion.button>
               </motion.div>
             </motion.div>
           )}

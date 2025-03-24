@@ -28,7 +28,7 @@ const About: React.FC = () => {
             viewport={{ once: true, margin: "-100px" }}
           >
             <div className="relative w-48 h-48 mx-auto md:ml-auto md:mr-0">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/10 to-primary/5 blur-xl"></div>
+              <div className="absolute inset-0 rounded-full bg-gray-400/30 blur-xl"></div>
               <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-primary/10">
                 <div className="w-full h-full bg-muted flex items-center justify-center">
                   <span className="text-muted-foreground font-medium">Your Photo</span>
@@ -46,7 +46,7 @@ const About: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true, margin: "-100px" }}
           >
-            <h3 className="text-2xl font-semibold mb-4">Meet Mangaonkar</h3>
+            <h3 className="text-2xl font-semibold mb-4 font-playfair">Meet Mangaonkar</h3>
             <p className="text-muted-foreground mb-6">
               I am a passionate developer and filmmaker with a love for creating engaging digital experiences and compelling visual stories. My journey in technology and creative arts has allowed me to develop a unique perspective on how these disciplines can complement each other.
             </p>
