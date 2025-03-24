@@ -89,7 +89,7 @@ const projects: Project[] = [
     title: "Virtual India",
     description: "Immerse yourself in 3D virtual tours of India's most breathtaking destinations from the comfort of your home.",
     tags: ["JavaScript", "API", "Three.js"],
-    image: "nest.png",
+    image: "virtu.png",
     type: "code",
     links: {
       demo: "https://startling-lokum-15cac5.netlify.app/",
