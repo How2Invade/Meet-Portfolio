@@ -31,9 +31,9 @@ const projects: Project[] = [
   },
   {
     title: "Health Vault",
-    description: "A full-featured e-commerce solution with product filtering, cart functionality, and payment processing.",
+    description: "A secure digital health locker that tracks records, auto-reminds vaccinations, and finds affordable care—all in one place.",
     tags: ["React", "Node.js", "MongoDB"],
-    image: "placeholder.svg",
+    image: "healt.png",
     type: "code",
     links: {
       demo: "https://unplug-health-vault.vercel.app/",
@@ -41,14 +41,14 @@ const projects: Project[] = [
     }
   },
   {
-    title: "Urban Stories",
-    description: "A short documentary exploring city life and the hidden stories of urban landscapes.",
-    tags: ["Documentary", "4K", "Urban"],
-    image: "placeholder.svg",
+    title: "WAKEUP",
+    description: "A short film exploring themes of isolation and Breaking of the Loop of Life",
+    tags: ["Short Film", "Silent Movie", "3 days"],
+    image: "wake.jpg",
     type: "film",
     links: {
       watch: "#",
-      youtube: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      youtube: "https://www.youtube.com/watch?v=UjQMxau9nO0",
     }
   },
   {
