@@ -55,7 +55,7 @@ const Hero: React.FC = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8"
           >
             <motion.a 
-              href="/downloads/resume.pdf" 
+              href="public/Resume Meet Mangaonkar.pdf" 
               className="apple-button flex items-center gap-2 px-4 py-2 rounded-lg bg-black text-white hover:bg-gray-800 transition-all"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
