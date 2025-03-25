@@ -30,9 +30,13 @@ const About: React.FC = () => {
             <div className="relative w-48 h-48 mx-auto md:ml-auto md:mr-0">
               <div className="absolute inset-0 rounded-full bg-gray-400/30 blur-xl"></div>
               <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-primary/10">
-                <div className="w-full h-full bg-muted flex items-center justify-center">
-                  <span className="text-muted-foreground font-medium">Meet Photo</span>
-                </div>
+              <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-primary/10">
+  <img 
+    src="profile-pic.png" // Replace this with the actual image path
+    alt="Meet Mangaonkar" 
+    className="w-full h-full object-cover" 
+  />
+</div>
               </div>
               <div className="absolute -bottom-2 -right-2 bg-background rounded-full p-2 shadow-md">
                 <Phone size={20} className="text-primary" />
