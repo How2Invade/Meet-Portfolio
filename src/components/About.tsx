@@ -47,7 +47,7 @@ const About: React.FC = () => {
       className="relative w-full h-full rounded-full overflow-hidden border-2 border-primary/10 shadow-[0_0_15px_rgba(255,255,255,0.5)]"
     >
       <img 
-        src="/path-to-your-image.jpg" // Replace with your actual image path
+        src="profile-pic.png" // Replace with your actual image path
         alt="Meet Mangaonkar" 
         className="w-full h-full object-cover"
       />
