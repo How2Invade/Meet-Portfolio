@@ -47,20 +47,20 @@ const achievements: Achievement[] = [
     certificate: "SPIT.jpg"
   },
   {
-    title: "Excellence in Film Editing",
-    description: "Recognized for exceptional editing work on an independent drama film that screened at multiple festivals.",
-    year: "2019",
+    title: "DATATHON",
+    description: "Datathon 3.0 was an intense data-driven hackathon, challenging participants to solve real-world problems using analytics and machine learning.",
+    year: "2025",
     icon: Award,
-    details: "The film required innovative editing techniques to tell a non-linear story. My work helped create a compelling emotional journey that resonated with audiences across different cultural backgrounds.",
-    certificate: "placeholder.svg"
+    details: "A recognition of participation in Datathon 3.0, showcasing problem-solving and data science expertise at NMIMS.",
+    certificate: "cyphor.png"
   },
   {
-    title: "Digital Innovation Award",
-    description: "Honored for developing a breakthrough approach to digital storytelling using emerging technologies.",
-    year: "2018",
+    title: "CodeCraft",
+    description: "The UI/UX hackathon pushed creativity and innovation, blending research with seamless design.",
+    year: "2025",
     icon: Medal,
-    details: "This project combined interactive media with traditional narrative structures to create an immersive storytelling experience. The technique has since been adopted by several media companies for their digital content strategies.",
-    certificate: "placeholder.svg"
+    details: "The UI/UX hackathon was a thrilling test of creativity, from in-depth UX research to polished UI prototypes. With a surprise selection twist and originality as key, it pushed participants to showcase their best work",
+    certificate: "Banner.jpg"
   },
 ];
 
