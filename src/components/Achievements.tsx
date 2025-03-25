@@ -20,7 +20,7 @@ const achievements: Achievement[] = [
     year: "2025",
     icon: Trophy,
     details: "Participated in a Python coding competition focused on India's rich cultural diversity. Developed an interactive app that showcases various aspects of Indian culture, integrating engaging content and intuitive design. Blended technical skills with cultural storytelling to create an informative and immersive experience.",
-    certificate: "ccp.jpg"
+    certificate: "prize.jpg"
   },
   {
     title: "Best Short Film Award",
@@ -32,19 +32,19 @@ const achievements: Achievement[] = [
   },
   {
     title: "UI/UX Competition by GDSC",
-    description: "Participated in FRCRCE’s UI/UX Competition, designing innovative solutions to real-world problems as Team meetmangaonkar.",
+    description: "Participated in FRCRCEs UI/UX Competition, designing innovative solutions to real-world problems as Team meetmangaonkar.",
     year: "2025",
     icon: Medal,
-    details: "UI/UX Competition – Solve Real-Life Problems | FRCRCE, Mumbai | Solo Participant Post - https://www.linkedin.com/posts/meet-mangaonkar-363640329_uiux-designthinking-problemsolving-activity-7270799667884421121-aGsS?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFLanfsB_48SCdUOa31VPIC1ZdmpkLmrDwk",
+    details: "UI/UX Competition  Solve Real-Life Problems | FRCRCE, Mumbai | Solo Participant Post - https://www.linkedin.com/posts/meet-mangaonkar-363640329_uiux-designthinking-problemsolving-activity-7270799667884421121-aGsS?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFLanfsB_48SCdUOa31VPIC1ZdmpkLmrDwk",
     certificate: "UIUX.jpg"
   },
   {
-    title: "Hackathon Champion",
+    title: "SPIT Hackathon ",
     description: "Led a team to victory in a 48-hour hackathon focused on solving healthcare accessibility challenges.",
-    year: "2020",
+    year: "2025",
     icon: Trophy,
-    details: "Our team created a mobile platform that connected rural patients with medical professionals through a low-bandwidth video solution. The project was praised for its attention to real-world constraints and elegant implementation.",
-    certificate: "placeholder.svg"
+    details: "The event was a thrilling 24-hour challenge that pushed our limits in innovation, teamwork, and problem-solving",
+    certificate: "SPIT.jpg"
   },
   {
     title: "Excellence in Film Editing",
