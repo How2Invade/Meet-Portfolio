@@ -97,12 +97,12 @@ const Hero: React.FC = () => {
                   }}
                   transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
                 />
-                <motion.div className="flex justify-center items-center w-full h-full">
+               <motion.div className="flex justify-center items-center w-full h-full overflow-hidden">
   <a href="https://youtu.be/8PJj6Heegmk" target="_blank" rel="noopener noreferrer">
     <motion.img
       src="thumbnail chiti.png" 
       alt="Project Preview" 
-      className="w-full h-auto max-w-[500px] object-cover rounded-lg"
+      className="w-auto h-auto max-w-full max-h-full object-contain rounded-lg"
       whileHover={{ scale: 1.05 }}
       transition={{ duration: 0.5 }}
     />
