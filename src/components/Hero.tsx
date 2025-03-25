@@ -118,7 +118,7 @@ const Hero: React.FC = () => {
                 </motion.div>
               </div>
               <div className="text-left w-full sm:w-1/2">
-                <h3 className="text-xl font-semibold mb-2">Featured Project</h3>
+                <h3 className="text-xl font-semibold mb-2">Chitti</h3>
                 <p className="text-muted-foreground mb-4">Check out my latest work showcasing cinematic storytelling and digital creativity.</p>
                 <motion.a 
                   href="https://youtu.be/8PJj6Heegmk" 
