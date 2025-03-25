@@ -98,7 +98,7 @@ const Hero: React.FC = () => {
                   transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
                 />
                 <motion.img
-                  src="/placeholder.svg" 
+                  src="thumbnail chiti.png" 
                   alt="Project Preview" 
                   className="w-full h-full object-cover"
                   whileHover={{ scale: 1.05 }}
