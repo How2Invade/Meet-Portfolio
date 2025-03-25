@@ -30,13 +30,35 @@ const About: React.FC = () => {
             <div className="relative w-48 h-48 mx-auto md:ml-auto md:mr-0">
               <div className="absolute inset-0 rounded-full bg-gray-400/30 blur-xl"></div>
               <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-primary/10">
-              <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-primary/10">
-  <img 
-    src="profile-pic.png" // Replace this with the actual image path
-    alt="Meet Mangaonkar" 
-    className="w-full h-full object-cover" 
-  />
-</div>
+              <motion.div
+  initial={{ opacity: 0, x: -30 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.6, delay: 0.2 }}
+  viewport={{ once: true, margin: "-100px" }}
+>
+  <div className="relative w-48 h-48 mx-auto md:ml-auto md:mr-0">
+    {/* Glow Effect */}
+    <div className="absolute inset-0 rounded-full bg-gray-400/30 blur-xl animate-pulse"></div>
+    
+    {/* Profile Image with Glow and Animation */}
+    <motion.div
+      animate={{ y: [0, -5, 0] }} // Subtle floating effect
+      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+      className="relative w-full h-full rounded-full overflow-hidden border-2 border-primary/10 shadow-[0_0_15px_rgba(255,255,255,0.5)]"
+    >
+      <img 
+        src="/path-to-your-image.jpg" // Replace with your actual image path
+        alt="Meet Mangaonkar" 
+        className="w-full h-full object-cover"
+      />
+    </motion.div>
+
+    {/* Icon Badge */}
+    <div className="absolute -bottom-2 -right-2 bg-background rounded-full p-2 shadow-md">
+      <Phone size={20} className="text-primary" />
+    </div>
+  </div>
+</motion.div>
               </div>
               <div className="absolute -bottom-2 -right-2 bg-background rounded-full p-2 shadow-md">
                 <Phone size={20} className="text-primary" />
